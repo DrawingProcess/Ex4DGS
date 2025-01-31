@@ -102,7 +102,7 @@ def convertdynerftocolmapdb(path, offset=0):
     db = COLMAPDatabase.connect(os.path.join(projectfolder, "input.db"))
 
     db.create_tables()
-    
+
     with open(originnumpy, 'rb') as numpy_file:
         poses_bounds = np.load(numpy_file)
         poses = poses_bounds[:, :15].reshape(-1, 3, 5)
@@ -147,7 +147,7 @@ def convertdynerftocolmapdb(path, offset=0):
             image_id = db.add_image(pngname, camera_id,  prior_q=np.array((colmapQ[0], colmapQ[1], colmapQ[2], colmapQ[3])), prior_t=np.array((T[0], T[1], T[2])), image_id=i+1)
             db.commit()
         db.close()
-    
+
     with open(savetxt, "w") as f:
         for line in imagetxtlist :
             f.write(line)
@@ -187,10 +187,10 @@ if __name__ == "__main__" :
         videopath = videopath + "/"
     
     # # ## step1
-    # print("start extracting 300 frames from videos")
-    # videoslist = glob.glob(videopath + "*.mp4")
-    # for v in tqdm.tqdm(videoslist):
-    #     extractframes(v)
+    print("start extracting 300 frames from videos")
+    videoslist = glob.glob(videopath + "*.mp4")
+    for v in tqdm.tqdm(videoslist):
+        extractframes(v)
     
     # # ## step2 prepare colmap input 
     print("start preparing colmap image input")

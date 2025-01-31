@@ -84,11 +84,13 @@ For dataset preprocessing, we follow [STG](https://github.com/oppo-us-research/S
 First, download the dataset from [here](https://github.com/facebookresearch/Neural_3D_Video). You will need colmap environment for preprocess.
 To setup dataset preprocessing environment, run scrips:
 ```shell
+sed -i -e 's/\r$//' ./scripts/env_setup.sh 
 ./scripts/env_setup.sh
 ```
 
 To preprocess dataset, run script:
 ```shell
+sed -i -e 's/\r$//' ./scripts/preprocess_all_n3v.sh 
 ./scripts/preprocess_all_n3v.sh <path to dataset>
 ```
 
